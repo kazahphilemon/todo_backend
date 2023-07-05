@@ -2,8 +2,8 @@ const  mongoose  = require("mongoose");
 
 const connectDb = async () =>{
     try {
-        const url = "mongodb+srv://kazahphilemon:kazeem20@cluster0.4todagt.mongodb.net/"
-        const conn =  await mongoose.connect(url, {
+        // const url = "mongodb+srv://kazahphilemon:kazeem20@cluster0.4todagt.mongodb.net/"
+        const conn =  await mongoose.connect(process.env.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
                 // useCreateIndex: true
