@@ -8,7 +8,7 @@ const UserModel = new mongoose.Schema({
     },
     age: {
         type: Number,
-        required:[true, "age is required"]
+        required:false,
     },
     email:{
         type: String,
@@ -19,12 +19,16 @@ const UserModel = new mongoose.Schema({
     gender:{
         type: String,
         enum: ["M", "F"],
-        required:[ true, "gender is required" ]
+        required: false
     },
 
     password:{
         type: String,
         required:[true, "password is required"]
+    },
+    confirm_password:{
+        type: String,
+        required: [true, "confirm password is required"]
     },
     
     token:{

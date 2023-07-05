@@ -131,11 +131,11 @@ const singleUser = async(req, res, next)=>{
 
 const register = async (req, res, next) =>{
     try{
-        const {name, age, email, gender, password}= req.body
+        const {name, age, email, gender, password, confirm_password}= req.body
        
 
     // check if any of the mention field is empty    
-        if(!name|| !email|| !password )
+        if(!name|| !email|| !password || confirm_password )
         return res.status(400).json({
             message: "all field are compulsory",
             success: false
@@ -166,7 +166,8 @@ const register = async (req, res, next) =>{
             age: age,
             email: email,
             gender: gender,
-            password: hashedPassword
+            password: hashedPassword,
+            confirm_password: hashedPassword
         })
         await user.save();
 
