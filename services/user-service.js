@@ -135,7 +135,7 @@ const register = async (req, res, next) =>{
        
 
     // check if any of the mention field is empty    
-        if(!name|| !email|| !password || confirm_password )
+        if(!name|| !email|| !password || !confirm_password )
         return res.status(400).json({
             message: "all field are compulsory",
             success: false
@@ -151,6 +151,11 @@ const register = async (req, res, next) =>{
         if (!email.includes("@"))
         return res.status(400).json({
             message:'invalid email'
+        })
+
+        if (password !==  confirm_password)
+        return res.status(400).json({
+            message: "password is different from confirm_password"
         })
      
         //  const usePassword = await jwt.sign({password}, process.env.JWT_SECRET, {algorithm: 'HS256'})
@@ -183,6 +188,7 @@ const register = async (req, res, next) =>{
         user.token = Access_token
     // instead of seeing the hash password you will just see hidden
         user.password = "hidden"
+        user.confirm_password="hidden"
     //cookies
         res.cookie("jwt", Access_token, {httpOnly: true, maxAge: 5 * 60 * 60 * 1000 })
 

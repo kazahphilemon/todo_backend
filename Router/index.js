@@ -1,4 +1,4 @@
-const userRouter = require("./users")
+
 module.exports = function(app){
     app.use(function(req, res, next){
         res.header(
@@ -7,6 +7,4 @@ module.exports = function(app){
         );
         next()
     })
-    // app.get("/", helloworld)
-    app.use("/users", userRouter )
 }

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express()
-const useRouter = require("./Router/users");
+const userRouter = require("./Router/users");
 const connectDb = require("./confi/db");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -24,7 +24,7 @@ const helloworld =(req, res)=>{
     res.send('hello world, welcome ')
 }
 
-
+app.use("/users", userRouter )
 const server = app.listen(
     PORT,
     console.log(
