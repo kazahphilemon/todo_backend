@@ -63,6 +63,11 @@ const updateTodo = async(req, res, next)=>{
         })
 
         const task = await Userlist.findByIdAndUpdate(id, req.body, {new: true});
+         if(JSON.stringify(task.user._id) !== JSON.stringify(req.user.id)){
+            return res.status(401).json({
+                message:"You Can't Upadte Another User To_do List"
+            })
+         }
         
         
         if (!task)
@@ -94,6 +99,11 @@ const deleteTodo = async(req, res, next)=>{
         })
 
         const item = await Userlist.findByIdAndDelete(id);
+        if(JSON.stringify(item.user._id) !== JSON.stringify(req.user.id)){
+            return res.status(401).json({
+                message:"You Can't Delete Another User To_do List"
+            })
+         }
 
         if (!item)
     return res.status(400).json({

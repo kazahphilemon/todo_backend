@@ -10,6 +10,8 @@ const registerSchema=Joi.object({
     gender:Joi.string().valid("M", "F"),
     
     password:Joi.string().min(8).max(15).required(),
+
+    confirm_password:Joi.string().min(8).max(15).required()
 })
 
 const loginSchema =Joi.object({

@@ -2,7 +2,7 @@ const {registerSchema, loginSchema} = require('../helper/validators')
 const Userservice = require('../services/user-service')
 
 
-const registration= async(res, req, next)=>{
+const registration= async(req, res, next)=>{
     const {error} = await registerSchema.validate(req.body)
     if(error){
         console.log(error)
@@ -12,7 +12,7 @@ const registration= async(res, req, next)=>{
         })
 
     }
-    await Userservice.register(res, req, next)
+    await Userservice.register(req, res, next)
 }
 
 const login = async(req, res, next)=>{

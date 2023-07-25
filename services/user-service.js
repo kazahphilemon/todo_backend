@@ -228,7 +228,7 @@ const signin= async(req, res)=>{
     }
     //token
     const token = await jwt.sign(
-        {id: findUser._id, name: findUser.name, age: findUser.age, email: findUser.email, gender: findUser.gender}, 
+        {id: findUser.id, name: findUser.name, age: findUser.age, email: findUser.email, gender: findUser.gender}, 
         process.env.JWT_SECRET, 
         {
             expiresIn: 5 * 60 * 60
